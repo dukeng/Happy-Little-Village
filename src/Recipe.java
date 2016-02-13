@@ -63,26 +63,21 @@ public class Recipe {
     }
 
     public void useGems2() {
-        for (int i = 0; i < 4; i++) { //row i
-            for (int j = 0; j < 4; j++) { //column j
+        for (int i = 0; i < grid[0].length; i++) { //row i
+            for (int j = 0; j < grid.length; j++) { //column j
                 if (grid[i][j] != 0) { // change from null to 0
                     //iterate through all known grid recipe
-                    for (int z = 0; z < 11; z++) {
-                        FirstRow:
-                        {
-                            for (int w = 0; w < recipes.get(z)[0].length; w++) { // iterate through the first row of a recipe
-                                if (recipes.get(z)[0][w] != 0) {
-                                    if (grid[i][j] == recipes.get(z)[0][w]) { //check if any of the first row's value matches with the grid
-                                        //start to specifically check one recipe
-                                        compareRecipe(z, i, j, w);
-                                        break FirstRow;
-                                    }//end checking for one specific recipe
-                                    else {
-                                        break FirstRow;
-                                    }
+                    for (int z = 0; z < recipes.size(); z++) {
+                        for (int w = 0; w < recipes.get(z)[0].length; w++) { // iterate through the first row of a recipe
+                            if (recipes.get(z)[0][w] != 0) {
+                                if (grid[i][j] == recipes.get(z)[0][w]) { //check if any of the first row's value matches with the grid
+                                    //start to specifically check one recipe
+                                    compareRecipe(z, i, j, w);
+                                    break;
+                                }//end checking for one specific recipe
+                                else {
+                                    break;
                                 }
-
-
                             }
                         }
                     }
@@ -104,7 +99,8 @@ public class Recipe {
                             match = false;
                             break checkMatch;
 
-                        } else if (grid[i + a][j + b - w] != check[a][b]) {
+                        }
+                        else if (grid[i + a][j + b - w] != check[a][b]) {
                             //System.out.println("Does not match at grid " + i + j + " and recipe " + z + " at " + a + b);
                             match = false;
                             break checkMatch;
