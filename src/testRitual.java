@@ -9,10 +9,10 @@ public class testRitual {
     public static void main(String[] args) {
         String total = "A";
         int[][] ritual = {
-                {1, 4, 4, 2},
-                {0, 2, 2, 2},
-                {4, 2, 1, 2},
-                {2, 2, 3, 0}
+                {1, 1, 4, 2},
+                {1, 0, 2, 0},
+                {1, 2, 0, 1},
+                {0, 3, 2, 0}
         };
         Recipe recipe = new Recipe(ritual);
         recipe.useGems2();
